@@ -21,6 +21,10 @@ window/size/viewport_height=800
 window/stretch/mode="canvas_items"
 window/handheld/orientation=1
 
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/gdscript_formatter/plugin.cfg")
+
 [input]
 
 fly={
