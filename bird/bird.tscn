@@ -38,7 +38,7 @@ script = ExtResource("1_leygl")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=789141520]
 sprite_frames = SubResource("SpriteFrames_gyfb1")
 autoplay = "default"
-frame_progress = 0.060119003
+frame_progress = 0.9108672
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2126612808]
 shape = SubResource("CircleShape2D_jwrbr")

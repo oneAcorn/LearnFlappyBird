@@ -1,0 +1,47 @@
+[gd_scene format=3 uid="uid://cjd3apmdg45n7"]
+
+[ext_resource type="LabelSettings" uid="uid://cyio2v03b6u75" path="res://hud/white_label.tres" id="1_2gk58"]
+[ext_resource type="FontFile" uid="uid://cb0irqyqwo0up" path="res://assets/LuckiestGuy-Regular.ttf" id="1_6ca3a"]
+
+[node name="HUD" type="CanvasLayer" unique_id=986578273]
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=85584373]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=1971496099]
+layout_mode = 2
+
+[node name="ScoreLabel" type="Label" parent="MarginContainer/VBoxContainer" unique_id=1963890787]
+layout_mode = 2
+text = "Score:0"
+label_settings = ExtResource("1_2gk58")
+horizontal_alignment = 1
+
+[node name="Space1" type="Control" parent="MarginContainer/VBoxContainer" unique_id=942308011]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Message" type="Label" parent="MarginContainer/VBoxContainer" unique_id=446170348]
+layout_mode = 2
+text = "Welcome"
+label_settings = ExtResource("1_2gk58")
+horizontal_alignment = 1
+
+[node name="StartBtn" type="Button" parent="MarginContainer/VBoxContainer" unique_id=48889120]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("1_6ca3a")
+theme_override_font_sizes/font_size = 20
+text = "Start Game"
+
+[node name="Space2" type="Control" parent="MarginContainer/VBoxContainer" unique_id=1740757621]
+layout_mode = 2
+size_flags_vertical = 3
