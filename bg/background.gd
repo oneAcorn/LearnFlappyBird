@@ -1,8 +1,8 @@
 extends Parallax2D
 
-const SPEED := -150
+const BASE_SPEED := -150
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	scroll_offset.x += SPEED * delta
+	scroll_offset.x += BASE_SPEED * scroll_scale.x * delta
