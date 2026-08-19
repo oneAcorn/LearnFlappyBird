@@ -1,0 +1,55 @@
+[gd_scene format=3 uid="uid://lla2pbdng6ql"]
+
+[ext_resource type="PackedScene" uid="uid://ckeeamj1lhbe7" path="res://bg/sky_2.tscn" id="1_c651c"]
+[ext_resource type="Script" uid="uid://u62xm6mt38m6" path="res://main/main.gd" id="1_kfbq2"]
+[ext_resource type="PackedScene" uid="uid://datt11uy2grko" path="res://bg/ground_2.tscn" id="2_3wy1v"]
+[ext_resource type="PackedScene" uid="uid://ubquwhmi02sb" path="res://bird/bird.tscn" id="3_kfbq2"]
+[ext_resource type="PackedScene" uid="uid://cjd3apmdg45n7" path="res://hud/hud.tscn" id="4_4dugh"]
+[ext_resource type="AudioStream" uid="uid://t18g8rneajbp" path="res://assets/BGMUSIC.mp3" id="5_3wy1v"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kfbq2"]
+size = Vector2(603, 107.5)
+
+[node name="Main" type="Node2D" unique_id=629623866]
+script = ExtResource("1_kfbq2")
+
+[node name="Sky2" parent="." unique_id=2113786005 instance=ExtResource("1_c651c")]
+
+[node name="ground2" parent="." unique_id=594592358 instance=ExtResource("2_3wy1v")]
+z_index = 1
+
+[node name="Bird" parent="." unique_id=77608373 instance=ExtResource("3_kfbq2")]
+position = Vector2(160, 300)
+
+[node name="HUD" parent="." unique_id=986578273 instance=ExtResource("4_4dugh")]
+
+[node name="PipesGroup" type="Node2D" parent="." unique_id=26475628]
+
+[node name="SpawnPoint" type="Marker2D" parent="." unique_id=13314287]
+position = Vector2(600, 350)
+
+[node name="SpawnTimer" type="Timer" parent="SpawnPoint" unique_id=1556927127]
+wait_time = 2.0
+
+[node name="Border" type="Node2D" parent="." unique_id=780644431]
+
+[node name="Ceil" type="Area2D" parent="Border" unique_id=580608523]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Border/Ceil" unique_id=1642425202]
+position = Vector2(300.5, 30.5)
+shape = SubResource("RectangleShape2D_kfbq2")
+
+[node name="Floor" type="Area2D" parent="Border" unique_id=1877618486]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Border/Floor" unique_id=930557425]
+position = Vector2(302, 755.25)
+shape = SubResource("RectangleShape2D_kfbq2")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1022122582]
+stream = ExtResource("5_3wy1v")
+volume_db = -10.035
+autoplay = true
+
+[connection signal="timeout" from="SpawnPoint/SpawnTimer" to="." method="_on_spawn_timer_timeout"]
+[connection signal="body_entered" from="Border/Ceil" to="." method="_on_ceil_body_entered"]
+[connection signal="body_entered" from="Border/Floor" to="." method="_on_floor_body_entered"]

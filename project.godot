@@ -11,8 +11,13 @@ config_version=5
 [application]
 
 config/name="LearnFlappyBird"
+run/main_scene="uid://lla2pbdng6ql"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
+
+[autoload]
+
+GameManager="*uid://ce4v7hgy5yy2m"
 
 [display]
 

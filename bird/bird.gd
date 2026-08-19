@@ -13,10 +13,16 @@ var rot_degree := 0  # 当前转度
 var is_dead := true
 
 @export var max_speed := 700
-@onready var animated_sprite := $AnimatedSprite2D
-@onready var particles := $CPUParticles2D
-@onready var fly_sound := $FlySound
-@onready var score_sound := $ScoreSound
+@onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
+@onready var particles: CPUParticles2D = $CPUParticles2D
+@onready var fly_sound: AudioStreamPlayer2D = $FlySound
+@onready var score_sound: AudioStreamPlayer2D = $ScoreSound
+
+
+func _ready() -> void:
+	GameManager.GameStart.connect(on_game_start)
+	GameManager.UpdateScore.connect(on_get_score)
+	GameManager.GameOver.connect(on_game_over)
 
 
 func _physics_process(delta: float) -> void:
@@ -37,3 +43,20 @@ func _physics_process(delta: float) -> void:
 		velocity.y = clampf(velocity.y, -max_speed, max_speed)
 
 		move_and_slide()
+
+
+func on_game_start():
+	is_dead = false
+	particles.emitting = true
+
+
+func on_get_score():
+	score_sound.stream = POINT
+	score_sound.play()
+
+
+func on_game_over():
+	fly_sound.stream = HIT
+	fly_sound.play()
+	particles.emitting = false
+	is_dead = true

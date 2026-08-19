@@ -16,13 +16,14 @@ func _process(delta: float) -> void:
 
 func _on_pipe_body_entered(body: Node2D) -> void:
 	if body.is_in_group("bird") and not body.is_dead:
-		pass
+		GameManager.GameOver.emit()
 
 
 func _on_coin_body_entered(body: Node2D) -> void:
 	# 如果小鸟通过,且前未计分
 	if body.is_in_group("bird") and not passed:
 		passed = true
+		GameManager.UpdateScore.emit()
 		animation_player.play("coin")
 
 		await animation_player.animation_finished

@@ -2,8 +2,10 @@
 
 [ext_resource type="LabelSettings" uid="uid://cyio2v03b6u75" path="res://hud/white_label.tres" id="1_2gk58"]
 [ext_resource type="FontFile" uid="uid://cb0irqyqwo0up" path="res://assets/LuckiestGuy-Regular.ttf" id="1_6ca3a"]
+[ext_resource type="Script" uid="uid://birg7exbnsfen" path="res://hud/hud.gd" id="1_318vg"]
 
 [node name="HUD" type="CanvasLayer" unique_id=986578273]
+script = ExtResource("1_318vg")
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=85584373]
 anchors_preset = 15
@@ -45,3 +47,5 @@ text = "Start Game"
 [node name="Space2" type="Control" parent="MarginContainer/VBoxContainer" unique_id=1740757621]
 layout_mode = 2
 size_flags_vertical = 3
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/StartBtn" to="." method="_on_start_btn_pressed"]
