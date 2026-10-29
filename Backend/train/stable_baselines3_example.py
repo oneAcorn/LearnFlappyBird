@@ -223,6 +223,9 @@ def linear_schedule(initial_value: float) -> Callable[[float], float]:
 if args.resume_model_path is None:
     
     learning_rate = args.learning_rate if not args.linear_lr_schedule else linear_schedule(args.learning_rate)
+    
+    # 小鸟训练使用较少的神经元
+    policy_kwargs=dict(net_arch = [16])
 
     model: PPO = PPO(
         "MultiInputPolicy",
@@ -234,6 +237,7 @@ if args.resume_model_path is None:
         learning_rate=learning_rate,
         batch_size=args.batch_size,
         clip_range=args.clip_range,
+        policy_kwargs=policy_kwargs
     )
 else:
     path_zip = pathlib.Path(args.resume_model_path)
