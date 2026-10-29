@@ -73,35 +73,47 @@ script = ExtResource("5_jwrbr")
 [node name="SensorH1" type="RayCast2D" parent="Sensors" unique_id=788715318]
 position = Vector2(0, -15)
 target_position = Vector2(300, 0)
+collide_with_areas = true
+collide_with_bodies = false
 script = ExtResource("5_rjgom")
 metadata/_custom_type_script = "uid://bnt3mcluce7mq"
 
 [node name="SensorH2" type="RayCast2D" parent="Sensors" unique_id=2049761429]
 position = Vector2(0, 17)
 target_position = Vector2(300, 0)
+collide_with_areas = true
+collide_with_bodies = false
 script = ExtResource("5_rjgom")
 metadata/_custom_type_script = "uid://bnt3mcluce7mq"
 
 [node name="SensorV1" type="RayCast2D" parent="Sensors" unique_id=1939712364]
 target_position = Vector2(0, 200)
+collide_with_areas = true
+collide_with_bodies = false
 script = ExtResource("5_rjgom")
 direction = 1
 metadata/_custom_type_script = "uid://bnt3mcluce7mq"
 
 [node name="SensorV2" type="RayCast2D" parent="Sensors" unique_id=977546320]
 target_position = Vector2(0, -200)
+collide_with_areas = true
+collide_with_bodies = false
 script = ExtResource("5_rjgom")
 direction = 1
 metadata/_custom_type_script = "uid://bnt3mcluce7mq"
 
 [node name="SensorD1" type="RayCast2D" parent="Sensors" unique_id=1856585213]
 target_position = Vector2(200, 200)
+collide_with_areas = true
+collide_with_bodies = false
 script = ExtResource("5_rjgom")
 direction = 2
 metadata/_custom_type_script = "uid://bnt3mcluce7mq"
 
 [node name="SensorD2" type="RayCast2D" parent="Sensors" unique_id=1792228167]
 target_position = Vector2(200, -200)
+collide_with_areas = true
+collide_with_bodies = false
 script = ExtResource("5_rjgom")
 direction = 2
 metadata/_custom_type_script = "uid://bnt3mcluce7mq"
