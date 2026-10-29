@@ -12,12 +12,8 @@ config_version=5
 
 config/name="LearnFlappyBird"
 run/main_scene="uid://lla2pbdng6ql"
-config/features=PackedStringArray("4.6", "C#", "Forward Plus")
+config/features=PackedStringArray("4.7", "C#", "Forward Plus")
 config/icon="res://icon.svg"
-
-[dotnet]
-
-project/assembly_name="Godot RL Agents"
 
 [autoload]
 
@@ -29,6 +25,10 @@ window/size/viewport_width=600
 window/size/viewport_height=800
 window/stretch/mode="canvas_items"
 window/handheld/orientation=1
+
+[dotnet]
+
+project/assembly_name="Godot RL Agents"
 
 [editor]
 

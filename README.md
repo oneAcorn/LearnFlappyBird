@@ -22,10 +22,11 @@
 
 ### 1.1 Godot
 
-- 需要 **Godot 4.6 .NET（C# / Mono）版本**，下载文件名形如 `Godot_v4.6.1-stable_mono_win64`。用这个编辑器打开 `Godot/` 目录。
+- 需要 **Godot 4.x .NET（C# / Mono）版本**，下载文件名带 `_mono`（例如 `Godot_v4.7.2-stable_mono_win64`）。用这个编辑器打开 `Godot/` 目录。
 - 项目已启用 `godot_rl_agents` 插件，主场景为 `Godot/main/main.tscn`。
 - `project.godot` 中已配置 `config/features` 包含 `C#`，并有 `[dotnet] project/assembly_name="Godot RL Agents"`。
-- `Godot RL Agents.csproj` 使用 `Godot.NET.Sdk/4.6.1` + `net8.0`，其中引用了 `Microsoft.ML.OnnxRuntime`。需要安装 .NET SDK（8.0 或更高）。
+- `Godot RL Agents.csproj` 使用 `Godot.NET.Sdk/4.7.2` + `net8.0`，其中引用了 `Microsoft.ML.OnnxRuntime`。需要安装 .NET SDK（8.0 或更高）。
+- **`Godot.NET.Sdk` 版本要和你实际使用的 Godot 编辑器版本一致**；换用其它 4.x 版本时，同步修改 csproj 里的 `Godot.NET.Sdk/x.y.z`。
 - 首次打开项目后先构建 C# 程序集：编辑器右上角的 **Build** 按钮，或在 `Godot/` 目录执行 `dotnet build "Godot RL Agents.csproj"`。ONNX 推理依赖该程序集。
 
 > **普通版（非 .NET）Godot 无法加载 `.cs` 脚本**，会报：
