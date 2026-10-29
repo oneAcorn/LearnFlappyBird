@@ -18,9 +18,9 @@ func update_score():
 
 func on_game_over():
 	update_score()
-	message.text = "GAME OVER"
-	message.show()
-	start_btn.show()
+	#message.text = "GAME OVER"
+	#message.show()
+	#start_btn.show()
 
 
 func _on_start_btn_pressed() -> void:

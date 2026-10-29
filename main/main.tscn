@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://ubquwhmi02sb" path="res://bird/bird.tscn" id="3_kfbq2"]
 [ext_resource type="PackedScene" uid="uid://cjd3apmdg45n7" path="res://hud/hud.tscn" id="4_4dugh"]
 [ext_resource type="AudioStream" uid="uid://t18g8rneajbp" path="res://assets/BGMUSIC.mp3" id="5_3wy1v"]
+[ext_resource type="Script" uid="uid://bmbjiru43x13t" path="res://addons/godot_rl_agents/sync.gd" id="7_4dugh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kfbq2"]
 size = Vector2(603, 107.5)
@@ -49,6 +50,12 @@ shape = SubResource("RectangleShape2D_kfbq2")
 stream = ExtResource("5_3wy1v")
 volume_db = -10.035
 autoplay = true
+
+[node name="Sync" type="Node" parent="." unique_id=485249312]
+script = ExtResource("7_4dugh")
+control_mode = 0
+action_repeat = 1
+metadata/_custom_type_script = "uid://bmbjiru43x13t"
 
 [connection signal="timeout" from="SpawnPoint/SpawnTimer" to="." method="_on_spawn_timer_timeout"]
 [connection signal="body_entered" from="Border/Ceil" to="." method="_on_ceil_body_entered"]

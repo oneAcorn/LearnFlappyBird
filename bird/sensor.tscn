@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://3tkdlksk6k4n"]
+
+[ext_resource type="Script" uid="uid://bnt3mcluce7mq" path="res://bird/sensor.gd" id="1_86tt1"]
+
+[node name="Sensor" type="RayCast2D" unique_id=723560773]
+collide_with_areas = true
+collide_with_bodies = false
+script = ExtResource("1_86tt1")

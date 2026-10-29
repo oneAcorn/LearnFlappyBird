@@ -28,16 +28,19 @@ label_settings = ExtResource("1_2gk58")
 horizontal_alignment = 1
 
 [node name="Space1" type="Control" parent="MarginContainer/VBoxContainer" unique_id=942308011]
+visible = false
 layout_mode = 2
 size_flags_vertical = 3
 
 [node name="Message" type="Label" parent="MarginContainer/VBoxContainer" unique_id=446170348]
+visible = false
 layout_mode = 2
 text = "Welcome"
 label_settings = ExtResource("1_2gk58")
 horizontal_alignment = 1
 
 [node name="StartBtn" type="Button" parent="MarginContainer/VBoxContainer" unique_id=48889120]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_fonts/font = ExtResource("1_6ca3a")
@@ -45,6 +48,7 @@ theme_override_font_sizes/font_size = 20
 text = "Start Game"
 
 [node name="Space2" type="Control" parent="MarginContainer/VBoxContainer" unique_id=1740757621]
+visible = false
 layout_mode = 2
 size_flags_vertical = 3
 

@@ -12,7 +12,9 @@ var pipes_scene: PackedScene = preload("res://pipe/pipes.tscn")
 
 func _ready() -> void:
 	GameManager.GameOver.connect(on_game_over)
-	GameManager.GameStart.connect(on_game_start)
+	#GameManager.GameStart.connect(on_game_start)
+	# 不需要手动启动游戏,方便AI训练
+	on_game_start()
 
 
 func on_game_start():
@@ -56,3 +58,4 @@ func reset_game():
 	var pipes = pipes_group.get_children()
 	for pipe in pipes:
 		pipe.queue_free()
+	call_deferred("on_game_start")

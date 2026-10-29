@@ -4,6 +4,10 @@
 [ext_resource type="Texture2D" uid="uid://de0njrvwuu3iq" path="res://assets/bird1.png" id="1_ot1l3"]
 [ext_resource type="Texture2D" uid="uid://bo4kmftf8aamh" path="res://assets/bird2.png" id="2_leygl"]
 [ext_resource type="Texture2D" uid="uid://7wmpbclwt124" path="res://assets/bird3.png" id="3_rjgom"]
+[ext_resource type="Script" uid="uid://dfog3sbs6c62" path="res://bird/sensors.gd" id="5_jwrbr"]
+[ext_resource type="Script" uid="uid://bnt3mcluce7mq" path="res://bird/sensor.gd" id="5_rjgom"]
+[ext_resource type="Script" uid="uid://16hnm70ltvcn" path="res://bird/sensor_coin.gd" id="6_gyfb1"]
+[ext_resource type="Script" uid="uid://dlab4bmq45fvx" path="res://bird/ai_controller_2d.gd" id="8_bv0mt"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_gyfb1"]
 animations = [{
@@ -32,6 +36,9 @@ point_count = 2
 [sub_resource type="Gradient" id="Gradient_4o1e2"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rjgom"]
+size = Vector2(300, 1500)
+
 [node name="Bird" type="CharacterBody2D" unique_id=77608373 groups=["bird"]]
 script = ExtResource("1_leygl")
 
@@ -59,3 +66,55 @@ color_ramp = SubResource("Gradient_4o1e2")
 [node name="FlySound" type="AudioStreamPlayer2D" parent="." unique_id=2146172138]
 
 [node name="ScoreSound" type="AudioStreamPlayer2D" parent="." unique_id=1327548727]
+
+[node name="Sensors" type="Node2D" parent="." unique_id=822470563]
+script = ExtResource("5_jwrbr")
+
+[node name="SensorH1" type="RayCast2D" parent="Sensors" unique_id=788715318]
+position = Vector2(0, -15)
+target_position = Vector2(300, 0)
+script = ExtResource("5_rjgom")
+metadata/_custom_type_script = "uid://bnt3mcluce7mq"
+
+[node name="SensorH2" type="RayCast2D" parent="Sensors" unique_id=2049761429]
+position = Vector2(0, 17)
+target_position = Vector2(300, 0)
+script = ExtResource("5_rjgom")
+metadata/_custom_type_script = "uid://bnt3mcluce7mq"
+
+[node name="SensorV1" type="RayCast2D" parent="Sensors" unique_id=1939712364]
+target_position = Vector2(0, 200)
+script = ExtResource("5_rjgom")
+direction = 1
+metadata/_custom_type_script = "uid://bnt3mcluce7mq"
+
+[node name="SensorV2" type="RayCast2D" parent="Sensors" unique_id=977546320]
+target_position = Vector2(0, -200)
+script = ExtResource("5_rjgom")
+direction = 1
+metadata/_custom_type_script = "uid://bnt3mcluce7mq"
+
+[node name="SensorD1" type="RayCast2D" parent="Sensors" unique_id=1856585213]
+target_position = Vector2(200, 200)
+script = ExtResource("5_rjgom")
+direction = 2
+metadata/_custom_type_script = "uid://bnt3mcluce7mq"
+
+[node name="SensorD2" type="RayCast2D" parent="Sensors" unique_id=1792228167]
+target_position = Vector2(200, -200)
+script = ExtResource("5_rjgom")
+direction = 2
+metadata/_custom_type_script = "uid://bnt3mcluce7mq"
+
+[node name="SensorCoin" type="Area2D" parent="Sensors" unique_id=182894158]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("6_gyfb1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sensors/SensorCoin" unique_id=553560942]
+position = Vector2(150, 0)
+shape = SubResource("RectangleShape2D_rjgom")
+
+[node name="AIController2D" type="Node2D" parent="." unique_id=656614552]
+script = ExtResource("8_bv0mt")
+metadata/_custom_type_script = "uid://442bn2d16mjw"

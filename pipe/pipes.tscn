@@ -130,6 +130,7 @@ rotation = 3.1415927
 position = Vector2(0, 90)
 
 [node name="Coin" type="Area2D" parent="." unique_id=158578564]
+collision_layer = 2
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Coin" unique_id=302786543]
 scale = Vector2(0.3, 0.3)
