@@ -22,9 +22,15 @@
 
 ### 1.1 Godot
 
-- 需要 **Godot 4.6 .NET（C#）版本**，用编辑器打开 `Godot/` 目录。
+- 需要 **Godot 4.6 .NET（C# / Mono）版本**，下载文件名形如 `Godot_v4.6.1-stable_mono_win64`。用这个编辑器打开 `Godot/` 目录。
 - 项目已启用 `godot_rl_agents` 插件，主场景为 `Godot/main/main.tscn`。
-- 首次打开后让编辑器编译 C# 程序集（`Godot RL Agents.csproj`，其中引用了 `Microsoft.ML.OnnxRuntime`）。ONNX 推理依赖 C# 程序集，**普通版 Godot 无法运行 ONNX 推理**。
+- `project.godot` 中已配置 `config/features` 包含 `C#`，并有 `[dotnet] project/assembly_name="Godot RL Agents"`。
+- `Godot RL Agents.csproj` 使用 `Godot.NET.Sdk/4.6.1` + `net8.0`，其中引用了 `Microsoft.ML.OnnxRuntime`。需要安装 .NET SDK（8.0 或更高）。
+- 首次打开项目后先构建 C# 程序集：编辑器右上角的 **Build** 按钮，或在 `Godot/` 目录执行 `dotnet build "Godot RL Agents.csproj"`。ONNX 推理依赖该程序集。
+
+> **普通版（非 .NET）Godot 无法加载 `.cs` 脚本**，会报：
+> `No loader found for resource: res://addons/godot_rl_agents/onnx/csharp/ONNXInference.cs`。
+> 这不是模型路径的问题，换成 .NET 版编辑器并完成 C# 构建即可。
 
 ### 1.2 Python（conda 环境）
 
@@ -213,5 +219,6 @@ python train/stable_baselines3_example.py --timesteps 1000000 --onnx_export_path
 | `You must provide the path to a exported game executable if n_parallel > 1` | 编辑器模式只能 `--n_parallel 1`，多开请用 `--env_path` |
 | `... folder already exists. Use a different --experiment_dir ...` | 开了 checkpoint 且同名目录已存在，换个 `--experiment_name` 或删掉旧 checkpoint 目录 |
 | ONNX 推理报模型路径不存在 | `onnx_model_path` 写错，或模型没复制进 Godot 项目（要 `res://` 路径） |
-| ONNX 推理报 C#/ONNXRuntime 相关错误 | 用的不是 Godot .NET 版本，或 C# 程序集没编译成功 |
+| `No loader found for resource: .../onnx/csharp/ONNXInference.cs` | 用的是普通版 Godot，不支持 C#。安装 Godot 4.6 .NET（`_mono`）版本打开项目，并构建 C# 程序集 |
+| ONNX 推理报 C#/ONNXRuntime 相关错误 | 用的不是 Godot .NET 版本，或 C# 程序集没编译成功（`dotnet build` 检查） |
 | `Gym has been unmaintained ...` 警告 | 只是警告，可忽略；本项目实际使用 `gymnasium` |

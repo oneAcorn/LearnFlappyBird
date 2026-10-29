@@ -53,7 +53,9 @@ autoplay = true
 
 [node name="Sync" type="Node" parent="." unique_id=485249312]
 script = ExtResource("7_4dugh")
+control_mode = 2
 action_repeat = 1
+onnx_model_path = "res://model/ppo_model.onnx"
 metadata/_custom_type_script = "uid://bmbjiru43x13t"
 
 [connection signal="timeout" from="SpawnPoint/SpawnTimer" to="." method="_on_spawn_timer_timeout"]
